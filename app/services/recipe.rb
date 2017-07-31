@@ -1,16 +1,17 @@
 class Recipe
   attr_accessor :cheap,
-               :cooking_minutes,
-               :dairy_free,
-               :gluten_free,
-               :image,
-               :ingredients,
-               :instructions,
-               :preparation_minutes,
-               :sustainable,
-               :title,
-               :vegan,
-               :vegetarian
+                :cooking_minutes,
+                :dairy_free,
+                :gluten_free,
+                :id,
+                :image,
+                :ingredients,
+                :instructions,
+                :preparation_minutes,
+                :sustainable,
+                :title,
+                :vegan,
+                :vegetarian
 
   def self.random
     response = Request.where('recipes/random', { number: 10 })

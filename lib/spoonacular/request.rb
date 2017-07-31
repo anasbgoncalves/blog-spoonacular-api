@@ -17,7 +17,6 @@ class Request
       query_string = query.map{|k,v| "#{k}=#{v}"}.join("&")
       path = query.empty?? root_path : "#{root_path}?#{query_string}"
       response = api.get(path)
-      binding.pry
       [JSON.parse(response.body), response.status]
     end
 
