@@ -1,4 +1,28 @@
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <%= link_to "Books", root_path %>
+      </li>
+      <li role="presentation" class="<%= 'active' if @active_tab == 'movies' %>">
+        <%= link_to "Vegan", root_path(query: { tags: 'vegan', number: 10 }) %>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <% @recipes.each do |recipe| %>
-  <%= image_tag recipe.image %>
-  <h2><%= recipe.title %></h2>
+  <div class="row">
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+      <%= image_tag recipe.image, width: 150 %>
+    </div>
+    <div class="col-xs-9">
+      <%= recipe.title %><br>
+      Cheap: <%= recipe.cheap %><br>
+      Preparation: <%= recipe.preparation_minutes %> min<br>
+      Cooking: <%= recipe.cooking_minutes %> min<br>
+    </div>
+  </div>
 <% end %>

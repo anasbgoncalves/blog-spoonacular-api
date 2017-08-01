@@ -2,13 +2,16 @@
 <html>
 <head>
   <title>BlogApi</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 </head>
-<body>
-
-<%= yield %>
-
-</body>
+  <body>
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
 </html>

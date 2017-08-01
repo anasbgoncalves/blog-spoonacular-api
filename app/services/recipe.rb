@@ -13,8 +13,8 @@ class Recipe
                 :vegan,
                 :vegetarian
 
-  def self.random
-    response = Request.where('recipes/random', { number: 10 })
+  def self.random(query = {})
+    response = Request.where('recipes/random', query)
     response['recipes'].map do |recipe|
       Recipe.new(recipe)
     end
