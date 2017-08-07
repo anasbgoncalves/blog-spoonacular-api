@@ -4,10 +4,6 @@ require 'json'
 class Connection
   BASE = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com'
 
-  def initialize(args = {})
-    @token = args.with_indifferent_access['token']
-  end
-
   def self.api
     @api ||= Faraday.new(url: BASE) do |faraday|
       faraday.response :logger

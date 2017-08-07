@@ -14,10 +14,14 @@ class Recipe
                 :vegetarian
 
   def self.random(query = {})
-    response = Request.where('recipes/random', query)
+    response = Request.where('recipes/random', query.merge({ number: 10 }))
     response['recipes'].map do |recipe|
       Recipe.new(recipe)
     end
+  end
+
+  def self.find(id)
+    response = Request.get(id)
   end
 
   def initialize(args = {})

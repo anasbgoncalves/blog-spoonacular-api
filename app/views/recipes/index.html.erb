@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-2">
+    <nav class="navbar">
+      <ul class="nav">
+        <li class="<%= 'active' if @tag == 'all' %>">
+          <%= link_to "All", root_path %>
+        </li>
+        <li class="<%= 'active' if @tag == 'gluten_free' %>">
+          <%= link_to "Gluten Free", root_path(query: { tags: 'gluten_free' }) %>
+        </li>
+        <li class="<%= 'active' if @active_tab == 'dairy_free' %>">
+          <%= link_to "Dairy Free", root_path(query: { tags: 'dairy_free' }) %>
+        </li>
+        <li class="<%= 'active' if @active_tab == 'vegetarian' %>">
+          <%= link_to "Vegetarian", root_path(query: { tags: 'vegetarian' }) %>
+        </li>
+        <li class="<%= 'active' if @active_tab == 'vegan' %>">
+          <%= link_to "Vegan", root_path(query: { tags: 'vegan' }) %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="col-xs-10">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1><%= @tag.capitalize %> recipes</h1>
+        </div>
+      </div>
+      <% @recipes.each do |recipe| %>
+        <div class="row">
+          <div class="col-xs-3">
+            <%= link_to recipe_path(recipe.id) do %>
+              <%= image_tag recipe.image, width: 150 %>
+            <% end %>
+          </div>
+          <div class="col-xs-9">
+            <%= recipe.title %><br>
+            Cheap: <%= recipe.cheap %><br>
+            Preparation: <%= recipe.preparation_minutes %> min<br>
+            Cooking: <%= recipe.cooking_minutes %> min<br>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

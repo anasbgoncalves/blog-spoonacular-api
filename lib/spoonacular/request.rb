@@ -5,15 +5,12 @@ class Request
       json_body if status == 200
     end
 
-    # def get
+    def get(id)
+      json_body, status = get_json(id)
+      json_body if status == 200
+    end
 
-    # end
-
-    # def search
-
-    # end
-
-    def get_json(root_path, query)
+    def get_json(root_path, query = {})
       query_string = query.map{|k,v| "#{k}=#{v}"}.join("&")
       path = query.empty?? root_path : "#{root_path}?#{query_string}"
       response = api.get(path)
