@@ -14,7 +14,7 @@ class Recipe
                 :vegetarian
 
   def self.random(query = {})
-    response = Request.where('recipes/random', query.merge({ number: 10 }))
+    response = Request.where('recipes/random', query.merge({ number: 12 }))
     response['recipes'].map do |recipe|
       Recipe.new(recipe)
     end

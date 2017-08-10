@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-2">
-    <nav class="navbar">
+    <nav class="navbar Sidebar">
       <ul class="nav">
         <li class="<%= 'active' if @tag == 'all' %>">
           <%= link_to "All", root_path %>
@@ -28,21 +28,31 @@
           <h1><%= @tag.capitalize %> recipes</h1>
         </div>
       </div>
-      <% @recipes.each do |recipe| %>
-        <div class="row">
-          <div class="col-xs-3">
-            <%= link_to recipe_path(recipe.id) do %>
-              <%= image_tag recipe.image, width: 150 %>
+      <div class="row">
+        <% @recipes.each_slice(3) do |recipes| %>
+          <div class="col-sm-3">
+            <% recipes.each do |recipe| %>
+              <div class="RecipeCard">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <%= link_to recipe_path(recipe.id) do %>
+                      <%= image_tag recipe.image, class: 'img-responsive' %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 RecipeCard-description">
+                    <%= recipe.title %><br>
+                    Cheap: <%= recipe.cheap %><br>
+                    Preparation: <%= recipe.preparation_minutes %> min<br>
+                    Cooking: <%= recipe.cooking_minutes %> min<br>
+                  </div>
+                </div>
+              </div>
             <% end %>
           </div>
-          <div class="col-xs-9">
-            <%= recipe.title %><br>
-            Cheap: <%= recipe.cheap %><br>
-            Preparation: <%= recipe.preparation_minutes %> min<br>
-            Cooking: <%= recipe.cooking_minutes %> min<br>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
