@@ -21,7 +21,8 @@ class Recipe
   end
 
   def self.find(id)
-    response = Request.get(id)
+    response = Request.get("recipes/#{id}/information")
+    Recipe.new(response)
   end
 
   def initialize(args = {})

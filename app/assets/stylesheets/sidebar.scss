@@ -1,3 +1,38 @@
 .Sidebar {
   background-color: #333;
+  position: fixed;
+  width: 12%;
+  height: 100%;
+}
+
+.Sidebar-itemLink {
+  color: #ccc;
+}
+
+.Sidebar-itemLink:hover {
+  background-color: none;
+}
+
+.Sidebar-item {
+  border-left: 2px solid;
+}
+
+.Sidebar-item--blue.active {
+  border-color: #26A3A7;
+}
+
+.Sidebar-item--green.active {
+  border-color: #A4D05F;
+}
+
+.Sidebar-item--yellow.active {
+  border-color: #FBDE62;
+}
+
+.Sidebar-item--pink.active {
+  border-color: #F58F98;
+}
+
+.Sidebar-item--white.active {
+  border-color: #F6F4F3;
 }

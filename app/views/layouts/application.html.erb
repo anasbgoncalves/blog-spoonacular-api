@@ -8,6 +8,15 @@
   <%= javascript_include_tag 'application' %>
 </head>
   <body>
-    <%= yield %>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= render "layouts/sidebar" %>
+      </div>
+      <div class="container">
+        <div class="col-xs-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
