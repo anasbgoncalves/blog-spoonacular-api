@@ -1,13 +1,11 @@
 class Request
   class << self
     def where(resource_path, query = {}, options = {}, clear_cache)
-      json_body, status = get_json(resource_path, query)
-      json_body if status == 200
+      get_json(resource_path, query, clear_cache)
     end
 
     def get(id, clear_cache)
-      json_body, status = get_json(id)
-      json_body if status == 200
+      get_json(id, {}, clear_cache)
     end
 
     def get_json(root_path, query = {}, clear_cache = false)

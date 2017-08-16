@@ -14,15 +14,21 @@ class Recipe
                 :vegetarian
 
   def self.random(query = {}, clear_cache)
-    response = Request.where('recipes/random', query.merge({ number: 12 }), clear_cache)
-    response['recipes'].map do |recipe|
-      Recipe.new(recipe)
+    response, status = Request.where('recipes/random', query.merge({ number: 12 }), clear_cache)
+    if status == 200 && response['status'] != 'failure'
+      response['recipes'].map { |recipe| Recipe.new(recipe) }
+    else
+      { error: response["message"], status: status }
     end
   end
 
   def self.find(id, clear_cache)
-    response = Request.get("recipes/#{id}/information", clear_cache)
-    Recipe.new(response)
+    response, status = Request.get("recipes/#{id}/information", clear_cache)
+    if status == 200 && response['status'] != 'failure'
+      Recipe.new(response)
+    else
+      { error: response["message"], status: status }
+    end
   end
 
   def initialize(args = {})

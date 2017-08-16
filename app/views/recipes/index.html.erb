@@ -4,27 +4,31 @@
   </div>
 </div>
 <div class="row">
-  <% @recipes.each_slice(3) do |recipes| %>
-    <div class="col-sm-3">
-      <% recipes.each do |recipe| %>
-        <div class="RecipeCard">
-          <div class="row">
-            <div class="col-xs-12">
-              <%= link_to recipe_path(recipe.id) do %>
-                <%= image_tag recipe.image, class: 'img-responsive' %>
-              <% end %>
+  <% if @recipes[:error] %>
+    <%= @recipes[:error] %>
+  <% else %>
+    <% @recipes.each_slice(3) do |recipes| %>
+      <div class="col-sm-3">
+        <% recipes.each do |recipe| %>
+          <div class="RecipeCard">
+            <div class="row">
+              <div class="col-xs-12">
+                <%= link_to recipe_path(recipe.id) do %>
+                  <%= image_tag recipe.image, class: 'img-responsive' %>
+                <% end %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 RecipeCard-description">
+                <%= recipe.title %><br>
+                Cheap: <%= recipe.cheap %><br>
+                Preparation: <%= recipe.preparation_minutes %> min<br>
+                Cooking: <%= recipe.cooking_minutes %> min<br>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12 RecipeCard-description">
-              <%= recipe.title %><br>
-              Cheap: <%= recipe.cheap %><br>
-              Preparation: <%= recipe.preparation_minutes %> min<br>
-              Cooking: <%= recipe.cooking_minutes %> min<br>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
