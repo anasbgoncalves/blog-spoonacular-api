@@ -4,8 +4,8 @@
   </div>
 </div>
 <div class="row">
-  <% if @recipes[:error] %>
-    <%= @recipes[:error] %>
+  <% if @errors %>
+    <%= @errors[:message] %>
   <% else %>
     <% @recipes.each_slice(3) do |recipes| %>
       <div class="col-sm-3">

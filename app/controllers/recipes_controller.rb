@@ -2,11 +2,11 @@ class RecipesController < ApplicationController
 
   def index
     @tag = query.fetch(:tags, 'all')
-    @recipes = Recipe.random(query, clear_cache)
+    @recipes, @errors = Spoonacular::Recipe.random(query, clear_cache)
   end
 
   def show
-    @recipe = Recipe.find(params[:id], clear_cache)
+    @recipe = Spoonacular::Recipe.find(params[:id], clear_cache)
   end
 
   private

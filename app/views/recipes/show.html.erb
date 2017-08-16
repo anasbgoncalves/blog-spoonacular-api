@@ -1,37 +1,41 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1><%= @recipe.title %></h1>
+<% if @recipe.errors %>
+  <%= @recipe.errors[:message] %>
+<% else %>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1><%= @recipe.title %></h1>
 
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-4">
-    <%= image_tag @recipe.image, class: 'img-responsive' %>
+  <div class="row">
+    <div class="col-xs-4">
+      <%= image_tag @recipe.image, class: 'img-responsive' %>
+    </div>
+    <div class="col-xs-4">
+      <h5>Ingredients</h5>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <%= ingredient.original_string %><br/>
+      <% end %>
+    </div>
+    <div class="col-xs-4">
+      Cheap: <%= @recipe.cheap %><br/>
+      Cooking Minutes <%= @recipe.cooking_minutes %><br/>
+      Dairy Free: <%= @recipe.dairy_free %><br/>
+      Gluten Free: <%= @recipe.gluten_free %><br/>
+      Preparation Minutes <%= @recipe.preparation_minutes %><br/>
+      Sustainable: <%= @recipe.sustainable %><br/>
+      Vegan: <%= @recipe.vegan %><br/>
+      Vegetarian: <%= @recipe.vegetarian %>
+    </div>
   </div>
-  <div class="col-xs-4">
-    <h5>Ingredients</h5>
-    <% @recipe.ingredients.each do |ingredient| %>
-      <%= ingredient.original_string %><br/>
-    <% end %>
-  </div>
-  <div class="col-xs-4">
-    Cheap: <%= @recipe.cheap %><br/>
-    Cooking Minutes <%= @recipe.cooking_minutes %><br/>
-    Dairy Free: <%= @recipe.dairy_free %><br/>
-    Gluten Free: <%= @recipe.gluten_free %><br/>
-    Preparation Minutes <%= @recipe.preparation_minutes %><br/>
-    Sustainable: <%= @recipe.sustainable %><br/>
-    Vegan: <%= @recipe.vegan %><br/>
-    Vegetarian: <%= @recipe.vegetarian %>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <h3>Instructions</h3>
-    <% @recipe.instructions.each do |instruction| %>
-      <%= instruction.number %> - <%= instruction.step %></br>
-    <% end %>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Instructions</h3>
+      <% @recipe.instructions.each do |instruction| %>
+        <%= instruction.number %> - <%= instruction.step %></br>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
