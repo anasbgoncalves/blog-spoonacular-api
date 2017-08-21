@@ -14,14 +14,14 @@ module Spoonacular
                   :vegan,
                   :vegetarian
 
-    def self.random(query = {}, clear_cache)
-      response = Request.where('recipes/random', query.merge({ number: 12 }), clear_cache)
+    def self.random(query = {})
+      response = Request.where('recipes/random', query.merge({ number: 12 }))
       recipes = response.fetch('recipes', []).map { |recipe| Recipe.new(recipe) }
       [ recipes, response[:errors] ]
     end
 
-    def self.find(id, clear_cache)
-      response = Request.get("recipes/#{id}/information", clear_cache)
+    def self.find(id)
+      response = Request.get("recipes/#{id}/information")
       Recipe.new(response)
     end
 

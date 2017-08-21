@@ -8,12 +8,10 @@
   <%= javascript_include_tag 'application' %>
 </head>
   <body>
-    <div class="row">
-      <div class="col-xs-2">
-        <%= render "layouts/sidebar" %>
-      </div>
-      <div class="container">
-        <div class="col-xs-12">
+    <%= render "layouts/sidebar" %>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-10">
           <%= yield %>
         </div>
       </div>

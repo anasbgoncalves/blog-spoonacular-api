@@ -7,7 +7,7 @@
       <%= link_to "Gluten Free", root_path(query: { tags: 'gluten_free' }), class: "Sidebar-itemLink" %>
     </li>
     <li class="Sidebar-item Sidebar-item--yellow <%= 'active' if @tag == 'dairy_free' %>">
-      <%= link_to "Dairy Free", root_path(query: { tags: 'dairy_free' }), class: "Sidebar-itemLink" %>
+      <%= link_to "Dairy Free", root_path(query: { tags: 'dairyFree' }), class: "Sidebar-itemLink" %>
     </li>
     <li class="Sidebar-item Sidebar-item--green <%= 'active' if @tag == 'vegetarian' %>">
       <%= link_to "Vegetarian", root_path(query: { tags: 'vegetarian' }), class: "Sidebar-itemLink" %>
