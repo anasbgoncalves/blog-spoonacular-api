@@ -1,14 +1,14 @@
 module Spoonacular
   class Recipe < Base
-    attr_accessor :cheap,
-                  :cooking_minutes,
+    attr_accessor :aggregate_likes,
+                  :cheap,
                   :dairy_free,
                   :gluten_free,
                   :id,
                   :image,
                   :ingredients,
                   :instructions,
-                  :preparation_minutes,
+                  :ready_in_minutes,
                   :sustainable,
                   :title,
                   :vegan,

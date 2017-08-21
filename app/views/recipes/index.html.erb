@@ -20,10 +20,13 @@
             </div>
             <div class="row">
               <div class="col-xs-12 RecipeCard-description">
-                <%= recipe.title %><br>
-                Cheap: <%= recipe.cheap %><br>
-                Preparation: <%= recipe.preparation_minutes %> min<br>
-                Cooking: <%= recipe.cooking_minutes %> min<br>
+                <h4><%= recipe.title %></h4>
+                <span class="pull-left">
+                  <i class="fa fa-thumbs-up"></i> <%= recipe.aggregate_likes %>
+                </span>
+                <span class="pull-right">
+                  <i class="fa fa-clock-o"></i> <%= recipe.ready_in_minutes %> min
+                </span>
               </div>
             </div>
           </div>
