@@ -1,7 +1,6 @@
 module Spoonacular
   class Recipe < Base
     attr_accessor :aggregate_likes,
-                  :cheap,
                   :dairy_free,
                   :gluten_free,
                   :id,
@@ -9,13 +8,14 @@ module Spoonacular
                   :ingredients,
                   :instructions,
                   :ready_in_minutes,
-                  :sustainable,
                   :title,
                   :vegan,
                   :vegetarian
 
+    MAX_LIMIT = 12
+
     def self.random(query = {})
-      response = Request.where('recipes/random', query.merge({ number: 12 }))
+      response = Request.where('recipes/random', query.merge({ number: MAX_LIMIT }))
       recipes = response.fetch('recipes', []).map { |recipe| Recipe.new(recipe) }
       [ recipes, response[:errors] ]
     end
@@ -32,12 +32,16 @@ module Spoonacular
     end
 
     def parse_ingredients(args = {})
-      args.fetch("extendedIngredients", []).map { |ingredient| Ingredient.new(ingredient) }
+      args.fetch("extendedIngredients", []).map do |ingredient|
+        Ingredient.new(ingredient)
+      end
     end
 
     def parse_instructions(args = {})
       instructions = args["analyzedInstructions"]
-      instructions.first["steps"].map { |instruction| Instruction.new(instruction) } if instructions
+      instructions.first["steps"].map do |instruction|
+        Instruction.new(instruction)
+      end if instructions
     end
   end
 end

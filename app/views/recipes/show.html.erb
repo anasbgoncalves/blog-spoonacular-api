@@ -11,22 +11,28 @@
   <div class="row">
     <div class="col-xs-4">
       <%= image_tag @recipe.image, class: 'img-responsive' %>
+
+      <div class="Icon-container">
+        <% if @recipe.gluten_free %>
+          <i class="Icon Icon-glutenFree"></i>
+        <% end %>
+
+        <% if @recipe.dairy_free %>
+          <i class="Icon Icon-dairyFree"></i>
+        <% end %>
+
+        <% if @recipe.vegetarian %>
+          <i class="Icon Icon-vegetarian"></i>
+        <% end %>
+
+        <i class="fa fa-clock-o"></i> <%= @recipe.ready_in_minutes %> min
+      </div>
     </div>
     <div class="col-xs-4">
       <h5>Ingredients</h5>
       <% @recipe.ingredients.each do |ingredient| %>
         <%= ingredient.original_string %><br/>
       <% end %>
-    </div>
-    <div class="col-xs-4">
-      Cheap: <%= @recipe.cheap %><br/>
-      Cooking Minutes <%= @recipe.cooking_minutes %><br/>
-      Dairy Free: <%= @recipe.dairy_free %><br/>
-      Gluten Free: <%= @recipe.gluten_free %><br/>
-      Preparation Minutes <%= @recipe.preparation_minutes %><br/>
-      Sustainable: <%= @recipe.sustainable %><br/>
-      Vegan: <%= @recipe.vegan %><br/>
-      Vegetarian: <%= @recipe.vegetarian %>
     </div>
   </div>
 

@@ -1,0 +1,23 @@
+.Icon-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.Icon {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  display: inline-block;
+}
+
+.Icon-glutenFree {
+  background-image: url('gluten_free.png')
+}
+
+.Icon-dairyFree {
+  background-image: url('dairy_free.png')
+}
+
+.Icon-vegetarian {
+  background-image: url('vegetarian.png')
+}
