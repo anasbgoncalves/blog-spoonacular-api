@@ -12,20 +12,24 @@
     <div class="col-xs-4">
       <%= image_tag @recipe.image, class: 'img-responsive' %>
 
-      <div class="Icon-container">
+      <div class="Icon-container pull-right">
         <% if @recipe.gluten_free %>
-          <i class="Icon Icon-glutenFree"></i>
+          <i class="Icon Icon--default Icon-glutenFree"></i>
         <% end %>
 
         <% if @recipe.dairy_free %>
-          <i class="Icon Icon-dairyFree"></i>
+          <i class="Icon Icon--default Icon-dairyFree"></i>
         <% end %>
 
         <% if @recipe.vegetarian %>
-          <i class="Icon Icon-vegetarian"></i>
+          <i class="Icon Icon--default Icon-vegetarian"></i>
         <% end %>
 
-        <i class="fa fa-clock-o"></i> <%= @recipe.ready_in_minutes %> min
+        <% if @recipe.vegan %>
+          <i class="Icon Icon--default Icon-vegan"></i>
+        <% end %>
+
+        <i class="Icon Icon--default Icon-clock"></i> <%= @recipe.ready_in_minutes %> min
       </div>
     </div>
     <div class="col-xs-4">

@@ -21,10 +21,31 @@
             <div class="row">
               <div class="col-xs-12 RecipeCard-description">
                 <h4><%= recipe.title %></h4>
-                <span class="pull-right">
-                  <i class="fa fa-thumbs-o-up"></i> <%= recipe.aggregate_likes %>
-                  <i class="fa fa-clock-o"></i> <%= recipe.ready_in_minutes %> min
-                </span>
+                <div class="Icon-container">
+                  <div>
+                    <% if recipe.gluten_free %>
+                      <i class="Icon Icon--small Icon-glutenFree"></i>
+                    <% end %>
+
+                    <% if recipe.dairy_free %>
+                      <i class="Icon Icon--small Icon-dairyFree"></i>
+                    <% end %>
+
+                    <% if recipe.vegetarian %>
+                      <i class="Icon Icon--small Icon-vegetarian"></i>
+                    <% end %>
+
+                    <% if recipe.vegan %>
+                      <i class="Icon Icon--small Icon-vegan"></i>
+                    <% end %>
+                  </div>
+                  <div>
+                    <i class="Icon Icon--small Icon-like"></i> <span><%= recipe.aggregate_likes %></span>
+                  </div>
+                  <div>
+                    <i class="Icon Icon--small Icon-clock"></i> <%= recipe.ready_in_minutes %> min
+                  </div>
+                </div>
               </div>
             </div>
           </div>

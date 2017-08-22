@@ -32,16 +32,15 @@ module Spoonacular
     end
 
     def parse_ingredients(args = {})
-      args.fetch("extendedIngredients", []).map do |ingredient|
-        Ingredient.new(ingredient)
-      end
+      args.fetch("extendedIngredients", []).map { |ingredient| Ingredient.new(ingredient) }
     end
 
     def parse_instructions(args = {})
       instructions = args["analyzedInstructions"]
-      instructions.first["steps"].map do |instruction|
-        Instruction.new(instruction)
-      end if instructions
+      if instructions
+        steps = instructions.first.fetch("steps", [])
+        steps.map { |instruction| Instruction.new(instruction) }
+      end
     end
   end
 end

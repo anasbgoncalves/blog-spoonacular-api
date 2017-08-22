@@ -1,11 +1,12 @@
 .Icon-container {
   margin-top: 20px;
-  text-align: center;
+  font-size: 10px;
 }
 
 .Icon {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
   background-size: cover;
   display: inline-block;
 }
@@ -20,4 +21,16 @@
 
 .Icon-vegetarian {
   background-image: url('vegetarian.png')
+}
+
+.Icon-vegan {
+  background-image: url('vegan.png')
+}
+
+.Icon-like {
+  background-image: url('like.png')
+}
+
+.Icon-clock {
+  background-image: url('clock.png')
 }
