@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <h1><%= @tag.capitalize %> recipes</h1>
+    <%= link_to "Refresh", root_path(@refresh_params), class: "btn btn-info pull-right" %>
   </div>
 </div>
 <div class="row">

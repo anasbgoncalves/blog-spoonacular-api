@@ -8,44 +8,56 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-4">
-      <%= image_tag @recipe.image, class: 'img-responsive' %>
+  <div class="Recipe">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= image_tag @recipe.image, class: 'Recipe-image img-responsive' %>
 
-      <div class="Icon-container pull-right">
-        <% if @recipe.gluten_free %>
-          <i class="Icon Icon--default Icon-glutenFree"></i>
-        <% end %>
+        <div class="Icon-container">
+          <% if @recipe.gluten_free %>
+            <i class="Icon Icon--default Icon-glutenFree"></i>
+          <% end %>
 
-        <% if @recipe.dairy_free %>
-          <i class="Icon Icon--default Icon-dairyFree"></i>
-        <% end %>
+          <% if @recipe.dairy_free %>
+            <i class="Icon Icon--default Icon-dairyFree"></i>
+          <% end %>
 
-        <% if @recipe.vegetarian %>
-          <i class="Icon Icon--default Icon-vegetarian"></i>
-        <% end %>
+          <% if @recipe.vegetarian %>
+            <i class="Icon Icon--default Icon-vegetarian"></i>
+          <% end %>
 
-        <% if @recipe.vegan %>
-          <i class="Icon Icon--default Icon-vegan"></i>
-        <% end %>
+          <% if @recipe.vegan %>
+            <i class="Icon Icon--default Icon-vegan"></i>
+          <% end %>
 
-        <i class="Icon Icon--default Icon-clock"></i> <%= @recipe.ready_in_minutes %> min
+          <i class="Icon Icon--default Icon-clock"></i> <%= @recipe.ready_in_minutes %> min
+        </div>
       </div>
     </div>
-    <div class="col-xs-4">
-      <h5>Ingredients</h5>
-      <% @recipe.ingredients.each do |ingredient| %>
-        <%= ingredient.original_string %><br/>
-      <% end %>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <h3>Instructions</h3>
-      <% @recipe.instructions.each do |instruction| %>
-        <%= instruction.number %> - <%= instruction.step %></br>
-      <% end %>
+    <div class="row Recipe-details">
+      <div class="col-xs-5">
+        <h3>Ingredients</h3>
+        <% @recipe.ingredients.each do |ingredient| %>
+          <div class="Recipe-ingredient">
+            <%= ingredient.original_string %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="col-xs-6">
+        <h3>Instructions</h3>
+        <% @recipe.instructions.each do |instruction| %>
+          <div class="Recipe-instruction">
+            <span class="Recipe-instructionNumber">
+              <%= instruction.number %>
+            </span>
+            <span class="Recipe-instructionStep">
+              <%= instruction.step %>
+            </span>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
